@@ -1,0 +1,35 @@
+.pratica02 {
+  h4{
+    font-size: 1.2rem;
+    font-weight:500;
+  }
+
+  .relogio {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: 2px solid #dcdcdc;
+    border-radius: 4px;
+
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      font-size: 24px;
+    }
+
+    button {
+      background-color: #dcdcdc;
+      height: 50px;
+      outline: none;
+      border: none;
+      padding: 8px 12px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 0px 0px 4px 4px;
+    }
+  }
+
+}

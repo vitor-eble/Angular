@@ -1,0 +1,22 @@
+.container{
+  margin: 0px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .titulo {
+    border-bottom: 2px solid #dcdcdc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    h3 {
+      font-size: 2rem;
+    }
+  }
+
+
+}

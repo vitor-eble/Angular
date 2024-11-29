@@ -1,0 +1,43 @@
+.pratica03 {
+  h4{
+    font-size: 1.2rem;
+    font-weight:500;
+  }
+
+  .semaforo {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  }
+
+  .semaforo-caixa {
+    display: flex;
+    justify-content: space-evenly;
+    width: 300px;
+    padding: 8px;
+    gap: 8px;
+    background: #4F4F4F;
+    border-radius: 8px 8px 0px 0px;
+
+    .lampada {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+
+  button {
+    background-color: #dcdcdc;
+      height: 34px;
+      width: 100%;
+      outline: none;
+      border: none;
+      padding: 4px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 0px 0px 8px 8px;
+  }
+
+}
