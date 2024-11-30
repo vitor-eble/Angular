@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './perfil-usuario.component.scss'
 })
 export class PerfilUsuarioComponent {
-  NomeUsuario: string = 'Nome Usuario';
-  IdadeUsuario: string = 'Idade';
-  TrabalhoUsuario: string = 'Profissão'
-  ImagemUsuario: string = 'https://angular.io/assets/images/logos/angular/angular.png';
+  nomeUsuario: string = 'Nome Usuario';
+  idadeUsuario: string = 'Idade';
+  trabalhoUsuario: string = 'Profissão'
+  imagemUsuario: string = 'https://angular.io/assets/images/logos/angular/angular.png';
 }

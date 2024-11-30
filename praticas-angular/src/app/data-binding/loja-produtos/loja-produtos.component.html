@@ -1,18 +1,25 @@
 <div class="pratica04">
-  <h4>Pratica 04: Loja de Produtos</h4>
+  <h4>Pratica 04: Card de Produtos</h4>
 
   <div class="card-produto">
     <div class="card-img">
-      <img [src]="imagemProduto" alt="">
+        <img [src]="imagemProduto" alt="">
     </div>
     <div class="card-description">
       <p>{{ nomeProduto }}</p>
-      <p>{{ precoProduto }}</p>
-      <p>{{ estoqueProduto }}</p>
-      <p [hidden]="estoqueProduto > 0">Produto Indisponivel</p>
+      <p>R${{ precoProduto }}</p>
+      <p>
+        Intel I5 12400F  Geforce RTX 4060 8GB
+        <br>
+        32GB ram SSD 1TB NVME H610M-G
+      </p>
+      <p >{{ estoqueProduto ? 'disponiveis: ' + estoqueProduto : 'indisponivel' }}</p>
+
+      <div class="card-button">
+        <button (click)="mudarValor()">Comprar</button>
+        <button (click)="mudarValor()">Adicionar ao carrinho</button>
+      </div>
     </div>
-    <div class="card-button">
-      <button (click)="mudarValor()">Diminuir estoque</button>
-    </div>
+
   </div>
 </div>
