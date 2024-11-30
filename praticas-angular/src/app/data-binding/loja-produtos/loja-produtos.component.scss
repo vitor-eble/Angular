@@ -1,8 +1,20 @@
-pratica04 {
+.pratica04 {
   h4{
     font-size: 1.2rem;
     font-weight:500;
   }
 
-  
+  .card-produto {
+
+    .card-img {
+      width: 100px;
+      height: 100px;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+
 }

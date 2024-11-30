@@ -1,4 +1,18 @@
 <div class="pratica04">
-  <h4>Pratica 03: semaforo</h4>
+  <h4>Pratica 04: Loja de Produtos</h4>
 
+  <div class="card-produto">
+    <div class="card-img">
+      <img [src]="imagemProduto" alt="">
+    </div>
+    <div class="card-description">
+      <p>{{ nomeProduto }}</p>
+      <p>{{ precoProduto }}</p>
+      <p>{{ estoqueProduto }}</p>
+      <p [hidden]="estoqueProduto > 0">Produto Indisponivel</p>
+    </div>
+    <div class="card-button">
+      <button (click)="mudarValor()">Diminuir estoque</button>
+    </div>
+  </div>
 </div>
