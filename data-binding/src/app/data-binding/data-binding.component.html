@@ -1,7 +1,7 @@
 <section class="property-binding">
 
-  <article>
-    <h3>nterpolation / Interpolação</h3>
+  <!-- <article>
+    <h3>Interpolation / Interpolação</h3>
     <p>String renderizada com Interpolação: {{ url }}</p>
     <p>resultado de 1 + 1 é: {{ 1 + 1 }}</p>
     <p>Resultado de 1 + 1 nao é {{ 1 + 1 + getValor() }}</p>
@@ -16,6 +16,38 @@
         <img bind-src="urlImagem">
       </div>
 
+    </article> -->
+
+    <article>
+      <h3>Class e Style binding</h3>
+      <div>
+        Selecione uma Classe:
+      </div>
+      <select #opicao (change)="0">
+        <option value="alert-success">Sucesso</option>
+        <option value="alert-info">Info</option>
+        <option value="alert-warning">Alerta</option>
+        <option value="alert-danger">Erro</option>
+      </select>
+      <br><br>
+
+      <div class="alert {{ opicao.value }}" role="alert">
+        Texto colorido conforme o valor do select
+      </div>
+
+      <div class="alert" role="alert"
+        [class.alert-success]="opicao.value == 'alert-success' ">Sucesso</div>
+      <div class="alert" role="alert"
+        [class.alert-info]="opicao.value == 'alert-info' ">Info</div>
+      <div class="alert" role="alert"
+        [class.alert-warning]="opicao.value == 'alert-warning'">Alerta</div>
+      <div class="alert" role="alert"
+        [class.alert-danger]="opicao.value == 'alert-danger'">Erro</div>
+
+      <div class="alert alert-danger" role="alert"
+        [style.display]="opicao.value == 'alert-danger' ? 'block' : 'none' ">
+        Se esse texto apareceu, é por que deu erro
+      </div>
     </article>
 
 </section>
