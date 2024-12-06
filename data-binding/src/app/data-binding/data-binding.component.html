@@ -52,36 +52,38 @@
 
 </section>
 
-<section class="event-binding">
-  <article>
-    <h3>Event Binding</h3>
+<!--<section class="event-binding">-->
+<!--  <article>-->
+<!--    <h3>Event Binding</h3>-->
 
-    <div>
-      <button (click)="botaoClicado()"
-        class="btn btn-primary">
-        Me Clique
-      </button>
+<!--    <div>-->
+<!--      <button (click)="botaoClicado()"-->
+<!--        class="btn btn-primary">-->
+<!--        Me Clique-->
+<!--      </button>-->
 
-      <br><br>
+<!--      <br><br>-->
 
-      <input type="text"
-        (keyup)="onKeyUp($event)"
-        (keyup.enter)="salvarValor(campoInput.value)"
-        (blur)="salvarValor(campoInput.value)"
-        #campoInput />
-      <p>valor Atual: {{ valorAtual }}</p>
-      <p>valor salvo: {{ valorSalvo }}</p>
+<!--      <input type="text"-->
+<!--        (keyup)="onKeyUp($event)"-->
+<!--        (keyup.enter)="salvarValor(campoInput.value)"-->
+<!--        (blur)="salvarValor(campoInput.value)"-->
+<!--        #campoInput />-->
+<!--      <p>valor Atual: {{ valorAtual }}</p>-->
+<!--      <p>valor salvo: {{ valorSalvo }}</p>-->
 
-      <br>
+<!--      <br>-->
 
-      <span
-        (mouseover)="onMouseOverOut()"
-        (mouseout)="onMouseOverOut()"
-        [class.highlight]="isMouseOver">
-        Passe o mouse sobre mim</span>
+<!--      <span-->
+<!--        (mouseover)="onMouseOverOut()"-->
+<!--        (mouseout)="onMouseOverOut()"-->
+<!--        [class.highlight]="isMouseOver">-->
+<!--        Passe o mouse sobre mim</span>-->
 
-    </div>
-  </article>
+<!--    </div>-->
+<!--  </article>-->
 
 
-</section>
+<!--</section>-->
+
+<app-meu-form></app-meu-form>
