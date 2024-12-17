@@ -8,19 +8,21 @@ import {FormsModule} from "@angular/forms";
 import {MeuFormModule} from './meu-form/meu-form.module';
 import { InputPropertyComponent } from './input-property/input-property.component';
 import { OutputPropertyComponent } from './output-property/output-property.component';
+import { CicloComponent } from './ciclo/ciclo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataBindingComponent,
     InputPropertyComponent,
-    OutputPropertyComponent
+    OutputPropertyComponent,
+    CicloComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-      MeuFormModule
+        MeuFormModule
     ],
   providers: [],
   bootstrap: [AppComponent]

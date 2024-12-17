@@ -52,7 +52,7 @@ export class DataBindingComponent implements OnInit {
 
   }
 
-  onMudouValor(evento: any){
+  onMudouValor(evento: any) {
     console.log(evento.novoValor);
 
   }
