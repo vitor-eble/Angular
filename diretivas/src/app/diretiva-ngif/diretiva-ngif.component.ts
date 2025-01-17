@@ -13,6 +13,6 @@ export class DiretivaNgifComponent {
   mostrarCursos: boolean = false;
 
   onMostrarCursos(){
-    this.mostrarCursos = !this.mostrarCursos
+    this.mostrarCursos = !this.mostrarCursos;
   }
 }
