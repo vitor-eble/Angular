@@ -15,4 +15,6 @@ export class DiretivaNgstyleComponent {
   mudarAtivo(){
     this.ativo = !this.ativo
   }
+
+
 }
