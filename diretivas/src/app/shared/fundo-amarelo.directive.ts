@@ -6,10 +6,7 @@ import { Directive, ElementRef, Renderer2 } from '@angular/core';
 })
 export class FundoAmareloDirective {
 
-  constructor(
-    private ElementRef: ElementRef,
-    private Renderer2: Renderer2
-  ) {
+  constructor( private ElementRef: ElementRef, private Renderer2: Renderer2 ) {
     // console.log(this.ElementRef);
     // this.ElementRef.nativeElement.style.backgroundColor = 'yellow';
     this.Renderer2.setStyle(
@@ -17,7 +14,5 @@ export class FundoAmareloDirective {
       'background-color',
       'yellow'
     )
-
   }
-
 }
