@@ -9,6 +9,5 @@ export class LogService {
 
   consoleLog(msg: string){
     console.log(msg);
-    
   }
 }
