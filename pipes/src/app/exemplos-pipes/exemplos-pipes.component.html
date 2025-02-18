@@ -8,3 +8,13 @@
 <p>Url: {{ livro.url }}</p>
 <br>
 <p>Livro: {{ livro | json }}</p>
+
+<input type="text" [(ngModel)]="filtro">
+<br>
+<input type="text" #novovalor>
+<button (click)="addCurso(novovalor.value)">Add Cursos</button>
+<ul>
+  <li *ngFor="let liv of livros | filtroArray:filtro">
+    {{ liv }}
+  </li>
+</ul>

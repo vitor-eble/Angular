@@ -17,4 +17,14 @@ export class ExemplosPipesComponent {
     url: 'http://a.co/glqjpRP'
   };
 
+  livros: string[] = ['Java', 'Angular 2', 'TypeScrit'];
+
+  filtro: string = ''
+
+  addCurso(valor: any){
+    this.livros.push(valor);
+    console.log(this.livros);
+
+  }
+
 }
