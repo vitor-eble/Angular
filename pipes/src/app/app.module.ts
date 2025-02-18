@@ -19,15 +19,12 @@ import { SettingsService } from './settings.service';
     AppRoutingModule
   ],
   providers: [
-    SettingsService,
-    {
-      provide: LOCALE_ID,
-      deps: [SettingsService],
-      useFactory: (settingsService: any) => settingsService.getLocale()
-    }
+    { provide: LOCALE_ID, useValue: 'en-US'}
+    // SettingsService,
     // {
     //   provide: LOCALE_ID,
-    //   useValue: 'pt-BR',
+    //   deps: [SettingsService],
+    //   useFactory: (settingsService: any) => settingsService.getLocale()
     // }
   ],
   bootstrap: [AppComponent]
