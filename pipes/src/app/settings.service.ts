@@ -7,7 +7,7 @@ export class SettingsService {
 
   constructor() { }
 
-  getLocale(){
-    return 'pt-BR'
-  }
+  // getLocale(){
+  //   return 'pt-BR'
+  // }
 }

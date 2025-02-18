@@ -17,7 +17,7 @@ export class ExemplosPipesComponent {
     url: 'http://a.co/glqjpRP'
   };
 
-  livros: string[] = ['Java', 'Angular 2', 'TypeScrit'];
+  livros: string[] = ['Java', 'Angular 2', 'TypeScript'];
 
   filtro: string = ''
 
