@@ -9,6 +9,8 @@ import { CursosComponent } from './cursos/cursos.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { routing } from './app-routing';
+import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
+import { MatIcon } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,9 @@ import { routing } from './app-routing';
     BrowserModule,
     AppRoutingModule,
     MatSlideToggleModule,
+    MatToolbar,
+    MatToolbarRow,
+    MatIcon,
     routing
   ],
   providers: [
