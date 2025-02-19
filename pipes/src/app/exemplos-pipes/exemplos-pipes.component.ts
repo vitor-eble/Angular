@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { interval, Observable } from 'rxjs';
+import { map } from 'rxjs';
+
 @Component({
   selector: 'app-exemplos-pipes',
   standalone: false,
@@ -24,7 +27,27 @@ export class ExemplosPipesComponent {
   addCurso(valor: any){
     this.livros.push(valor);
     console.log(this.livros);
-
   }
 
-}
+  obterCurso(){
+    if(this.livros.length === 0 || this.filtro === undefined || this.filtro.trim() === ''){
+      return this.livros;
+    }
+
+    return this.livro.filter((v: string) => {
+      if (v.toLowerCase().indexOf(this.filtro.toLowerCase()) >= 0){
+        return true
+      }
+      return false
+    });
+  };
+
+  valorAsync = new Promise((resolve) => {
+    setTimeout(() => resolve('valor Assíncrono'), 2000)
+  });
+
+  valorAsync2 = interval(2000).pipe(
+    map(() => 'Valor Assíncrono 2')
+  )
+
+};

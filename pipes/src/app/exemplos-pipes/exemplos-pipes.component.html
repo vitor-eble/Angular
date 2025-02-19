@@ -13,8 +13,32 @@
 <br>
 <input type="text" #novovalor>
 <button (click)="addCurso(novovalor.value)">Add Cursos</button>
+
+<h5>Pipe Puro</h5>
 <ul>
   <li *ngFor="let liv of livros | filtroArray:filtro">
     {{ liv }}
   </li>
 </ul>
+
+<h5>Pipe Impuro</h5>
+<ul>
+  <li *ngFor="let liv of livros | filtroArrayImpuro:filtro">
+    {{ liv }}
+  </li>
+</ul>
+
+<h5>Maneira correta de usar filtro nos projetos</h5>
+<ul>
+  <li *ngFor="let liv of obterCurso()">
+    {{ liv }}
+  </li>
+</ul>
+
+<p>
+  {{ valorAsync | async }}
+</p>
+<p>
+  {{ valorAsync2 | async }}
+</p>
+
