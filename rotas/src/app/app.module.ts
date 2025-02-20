@@ -10,13 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { routing } from './app-routing';
 import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
+import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CursosComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    CursoDetalheComponent
   ],
   imports: [
     BrowserModule,
