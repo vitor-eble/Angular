@@ -18,20 +18,20 @@ export class CursoDetalheComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.inscricao = this.route.params.subscribe(
-    //   (params: any) => {
-    //     this.id = params['id']
-    //   }
-    // );
-
-    this.route.params.subscribe(
+    this.inscricao = this.route.params.subscribe( // boas praticas
       (params: any) => {
         this.id = params['id']
       }
-    )
+    );
+
+    // this.route.params.subscribe(
+    //   (params: any) => {
+    //     this.id = params['id']
+    //   }
+    // )
   }
 
   ngOnDestroy(){
-    this.inscricao.unsubscribe()
+    this.inscricao.unsubscribe() // boas praticas
   }
 }
