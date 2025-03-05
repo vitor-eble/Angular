@@ -15,7 +15,6 @@ import { CursosModule } from './cursos/cursos.module';
   ],
   imports: [
     BrowserModule,
-
     CursosModule,
     AppRoutingModule
 
