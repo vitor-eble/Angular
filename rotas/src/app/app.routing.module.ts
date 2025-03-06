@@ -12,6 +12,8 @@ import { AppModule } from "./app.module";
 // import { CursoNaoEncontradoComponent } from "./cursos/curso-nao-encontrado/curso-nao-encontrado.component";
 
 const appRoute: Routes = [
+  { path: 'cursos', loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule )},
+  { path: 'alunos', loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule) },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent  },
   { path: 'login', component: LoginComponent},
