@@ -1,11 +1,8 @@
 import { NgModule } from "@angular/core";
-
-import { ModuleWithProviders } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from "./login/login.component";
-import { AppModule } from "./app.module";
 
 // import { CursosComponent } from "./cursos/cursos.component";
 // import { CursoDetalheComponent } from "./cursos/curso-detalhe/curso-detalhe.component";
