@@ -16,6 +16,7 @@ export class LoginComponent {
   constructor(private authService: AuthService) { }
 
   fazerLogin(){
+    this.authService.fazerLogin(this.usuario);
 
   }
 
