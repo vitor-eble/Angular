@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private route: Router) { }
 
   fazerLogin(usuario: Usuario){
-    if(usuario.nome === 'usuario@email.com' && usuario.senha === '123456'){
+    if(usuario.nome === 'abc' && usuario.senha === 'abc'){
       this.usuarioAutenticado = true;
       this.mostrarMenuEmitter.emit(true)
       this.route.navigate(['/'])
@@ -24,5 +24,9 @@ export class AuthService {
       this.usuarioAutenticado = false;
       this.mostrarMenuEmitter.emit(false)
     }
+  }
+
+  UsuarioEstaAutenticado(){
+    return this.usuarioAutenticado;
   }
 }
