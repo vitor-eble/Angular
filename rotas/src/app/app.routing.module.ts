@@ -3,15 +3,16 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from "./login/login.component";
-
 import { AuthGuard } from "./guards/auth.guard";
+import { CursosGuard } from "./guards/cursos.guard";
+import { AlunosGuard } from "./guards/alunos.guard";
 
 // import { CursosComponent } from "./cursos/cursos.component";
 // import { CursoDetalheComponent } from "./cursos/curso-detalhe/curso-detalhe.component";
 // import { CursoNaoEncontradoComponent } from "./cursos/curso-nao-encontrado/curso-nao-encontrado.component";
 
 const appRoute: Routes = [
-  { path: 'cursos', canActivate: [AuthGuard],
+  { path: 'cursos', canActivate: [AuthGuard], canActivateChild: [CursosGuard],
     loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule )},
   { path: 'alunos', canActivate: [AuthGuard],
     loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule) },

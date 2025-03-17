@@ -1,0 +1,23 @@
+import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot } from "@angular/router";
+import { Observable } from "rxjs";
+import { of } from "rxjs";
+
+@Injectable()
+export class AlunosGuard implements CanActivateChild {
+
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | boolean {
+
+    console.log(route);
+    console.log(state);
+
+    if(state.url.includes('edit')){
+      alert('Usuário sem acesso');
+      return of(false);
+    }
+    return  true
+  }
+}
