@@ -12,12 +12,22 @@ import { AlunosGuard } from "./guards/alunos.guard";
 // import { CursoNaoEncontradoComponent } from "./cursos/curso-nao-encontrado/curso-nao-encontrado.component";
 
 const appRoute: Routes = [
-  { path: 'cursos', canActivate: [AuthGuard], canActivateChild: [CursosGuard],
-    loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule )},
-  { path: 'alunos', canActivate: [AuthGuard],
-    loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule) },
+  { path: 'cursos',
+    canActivate: [AuthGuard],
+    canActivateChild: [CursosGuard],
+    canLoad: [AuthGuard],
+    loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule )
+  },
+  { path: 'alunos',
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
+    loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule)
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'login', component: LoginComponent },
   // { path: 'cursos', component: CursosComponent },
   // { path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
