@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class TemplateFormComponent {
 
+  onSubmit(form: any){
+    console.log(form);
+
+  }
 }
