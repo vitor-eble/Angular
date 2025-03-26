@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from "./login/login.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { CursosGuard } from "./guards/cursos.guard";
-import { AlunosGuard } from "./guards/alunos.guard";
+import { Pagina404Component } from "./pagina404/pagina404.component";
 
 // import { CursosComponent } from "./cursos/cursos.component";
 // import { CursoDetalheComponent } from "./cursos/curso-detalhe/curso-detalhe.component";
@@ -23,12 +23,10 @@ const appRoute: Routes = [
     canLoad: [AuthGuard],
     loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule)
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard]
-  },
   { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: Pagina404Component}
   // { path: 'cursos', component: CursosComponent },
   // { path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
   // { path: 'curso/:id', component: CursoDetalheComponent },
