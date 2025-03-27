@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-template-form',
@@ -16,6 +17,9 @@ export class TemplateFormComponent {
   onSubmit(form: any){
     console.log(form);
     // console.log(this.usuario);
+  }
 
+  isInvalid(input: NgModel){
+    return input.invalid && input.touched;
   }
 }
