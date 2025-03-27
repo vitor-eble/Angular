@@ -1,18 +1,28 @@
 <form #formGroup="ngForm" (ngSubmit)="onSubmit(formGroup)">
-  <div class="form-group">
-    <label for="nome">Nome</label>
+  <div class="form-group"
+  [class.has-error]="!nomeInput.valid && nomeInput.touched"
+  [class.has-feeback]="!nomeInput.valid && nomeInput.touched">
+    <label for="nome" class="control-label">Nome</label>
     <input type="text" class="form-control" id="nome" placeholder="Nome" name="nameInput"
-    ngModel [ngModel]="usuario.nome" required #nomeInput>
-    <!-- <div>
-      {{nomeInput.className}}
-    </div> -->
+    ngModel [ngModel]="usuario.nome" required #nomeInput="ngModel" aria-describedby="nome">
+    <span id="nome" class="sr-only" *ngIf="nomeInput.invalid && nomeInput.touched">(error)</span>
+    <div class="alert alert-danger"*ngIf="nomeInput.invalid && nomeInput.touched">
+      Nome é Obrigatorio.
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="email">Nome</label>
+  <div class="form-group"
+  [class.has-error]="!emailInput.valid && emailInput.touched"
+  [class.has-feeback]="!emailInput.valid && emailInput.touched">
+    <label for="email" class="control-label">Email</label>
     <input type="email" class="form-control" id="email" placeholder="nome@email.com" name="emailInput"
-    ngModel [ngModel]="usuario.email" required email>
+    ngModel [ngModel]="usuario.email" required email #emailInput="ngModel">
+    <span id="email" class="sr-only" *ngIf="emailInput.invalid && emailInput.touched">(error)</span>
+    <div class="alert alert-danger" role="alert" *ngIf="emailInput.invalid && emailInput.touched">
+      Email Invalido
+    </div>
   </div>
+
 
   <button type="submit" title="btnsubmit" class="btn btn-primary">
     Sumbit
