@@ -1,6 +1,6 @@
 <form #formGroup="ngForm" (ngSubmit)="onSubmit(formGroup)" class="form-horizontal">
 
-  <div class="form-group" [class.has-error]="!nomeInput.valid && nomeInput.touched" [class.has-feeback]="!nomeInput.valid && nomeInput.touched">
+  <div class="form-group" [ngClass]="aplicaCssErro(nomeInput)">
     <div class="col-sm-12">
       <label for="nome" class="control-label">Nome</label>
     </div>
@@ -8,14 +8,12 @@
     <div class="col-sm-12">
       <input type="text" class="form-control" id="nome" placeholder="Nome" name="nameInput"
       ngModel [ngModel]="usuario.nome" required #nomeInput="ngModel" aria-describedby="nome">
-      <span id="nome" class="sr-only" *ngIf="nomeInput.invalid && nomeInput.touched">(error)</span>
-      <div class="alert alert-danger"*ngIf="nomeInput.invalid && nomeInput.touched">
-        Nome é Obrigatorio.
-      </div>
+      <app-campo-control-error [mostrarErro]="verificaValidTouched(nomeInput)" msgError="Nome é Obrigatorio">
+      </app-campo-control-error>
     </div>
   </div>
 
-  <div class="form-group" [class.has-error]="!emailInput.valid && emailInput.touched" [class.has-feeback]="!emailInput.valid && emailInput.touched">
+  <div class="form-group" [ngClass]="aplicaCssErro(emailInput)">
     <div class="col-sm-12">
       <label for="email" class="control-label">Email</label>
     </div>
@@ -23,30 +21,24 @@
     <div class="col-sm-12">
       <input type="email" class="form-control" id="email" placeholder="nome@email.com" name="emailInput"
       ngModel [ngModel]="usuario.email" required email #emailInput="ngModel">
-      <span id="email" class="sr-only" *ngIf="emailInput.invalid && emailInput.touched">(error)</span>
-      <div class="alert alert-danger" role="alert" *ngIf="emailInput.invalid && emailInput.touched">
-        Email Invalido
-      </div>
+      <app-campo-control-error [mostrarErro]="verificaValidTouched(emailInput)" msgError="Email Invalido">
+      </app-campo-control-error>
     </div>
   </div>
 
   <div class="form-group">
-    <div class="col-md-3" [class.has-error]="!cepInput.valid && cepInput.touched" [class.has-feeback]="!cepInput.valid && cepInput.touched">
+    <div class="col-md-3" [ngClass]="aplicaCssErro(cepInput)">
       <label for="cep" class="control-label">CEP</label>
       <input type="text" class="form-control" id="cep" name="cepInput" ngModel required #cepInput="ngModel" placeholder="Digite o CEP">
-      <span id="cep" class="sr-only" *ngIf="cepInput.invalid && cepInput.touched">(error)</span>
-      <div class="alert alert-danger"*ngIf="cepInput.invalid && cepInput.touched">
-        CEP é Obrigatorio.
-      </div>
+      <app-campo-control-error [mostrarErro]="verificaValidTouched(cepInput)" msgError="CEP é Obrigatorio">
+      </app-campo-control-error>
     </div>
 
-    <div class="col-md-3" [class.has-error]="!numeroInput.valid && numeroInput.touched" [class.has-feeback]="!numeroInput.valid && numeroInput.touched">
+    <div class="col-md-3" [ngClass]="aplicaCssErro(numeroInput)">
       <label for="numero" class="control-label">Número</label>
       <input type="number" class="form-control" id="numero" name="numeroInput" ngModel required #numeroInput="ngModel" placeholder="100">
-      <span id="numero" class="sr-only" *ngIf="numeroInput.invalid && numeroInput.touched">(error)</span>
-      <div class="alert alert-danger"*ngIf="numeroInput.invalid && numeroInput.touched">
-        Número é Obrigatorio.
-      </div>
+      <app-campo-control-error [mostrarErro]="verificaValidTouched(numeroInput)" msgError="Número é Obrigatorio">
+      </app-campo-control-error>
     </div>
 
     <div class="col-md-6">
@@ -55,7 +47,7 @@
     </div>
   </div>
 
-  <div class="form-group" [class.has-error]="!ruaInput.valid && ruaInput.touched" [class.has-feeback]="!ruaInput.valid && ruaInput.touched">
+  <div class="form-group" [ngClass]="aplicaCssErro(ruaInput)">
     <div class="col-sm-12">
       <label for="rua" class="control-label">Rua</label>
     </div>
@@ -63,39 +55,31 @@
     <div class="col-sm-12">
       <input type="text" class="form-control" id="rua" placeholder="Nome" name="ruaInput"
       ngModel [ngModel]="usuario.nome" required #ruaInput="ngModel" aria-describedby="nome">
-      <span id="rua" class="sr-only" *ngIf="ruaInput.invalid && ruaInput.touched">(error)</span>
-      <div class="alert alert-danger"*ngIf="ruaInput.invalid && ruaInput.touched">
-        Rua é Obrigatorio.
-      </div>
+      <app-campo-control-error [mostrarErro]="verificaValidTouched(ruaInput)" msgError="Rua é Obrigatorio">
+      </app-campo-control-error>
     </div>
   </div>
 
   <div class="form-group">
-    <div class="col-md-5" [class.has-error]="!bairroInput.valid && bairroInput.touched" [class.has-feeback]="!bairroInput.valid && bairroInput.touched">
+    <div class="col-md-5" [ngClass]="aplicaCssErro(bairroInput)">
       <label for="bairro" class="control-label">Bairro</label>
       <input type="text" class="form-control" id="bairro" name="bairroInput" ngModel required #bairroInput="ngModel" placeholder="Digite o bairro">
-      <span id="bairro" class="sr-only" *ngIf="bairroInput.invalid && bairroInput.touched">(error)</span>
-      <div class="alert alert-danger"*ngIf="bairroInput.invalid && bairroInput.touched">
-        Bairro é Obrigatorio.
-      </div>
+      <app-campo-control-error [mostrarErro]="verificaValidTouched(bairroInput)" msgError="Bairro é Obrigatorio">
+      </app-campo-control-error>
     </div>
 
-    <div class="col-md-4" [class.has-error]="!cidadeInput.valid && cidadeInput.touched" [class.has-feeback]="!cidadeInput.valid && cidadeInput.touched">
+    <div class="col-md-4" [ngClass]="aplicaCssErro(cidadeInput)">
       <label for="cidade" class="control-label">Cidade</label>
       <input type="text" class="form-control" id="cidade" name="cidadeInput" ngModel required #cidadeInput="ngModel" placeholder="Digite a cidade">
-      <span id="cidade" class="sr-only" *ngIf="cidadeInput.invalid && cidadeInput.touched">(error)</span>
-      <div class="alert alert-danger"*ngIf="cidadeInput.invalid && cidadeInput.touched">
-        Cidade é Obrigatorio.
-      </div>
+      <app-campo-control-error [mostrarErro]="verificaValidTouched(cidadeInput)" msgError="Cidade é Obrigatorio">
+      </app-campo-control-error>
     </div>
 
-    <div class="col-md-3" [class.has-error]="!estadoInput.valid && estadoInput.touched" [class.has-feeback]="!estadoInput.valid && estadoInput.touched">
+    <div class="col-md-3" [ngClass]="aplicaCssErro(estadoInput)">
       <label for="estado" class="control-label">Estado</label>
       <input type="text" class="form-control" id="estado" name="estadoInput" ngModel required #estadoInput="ngModel" placeholder="Digite o estado">
-      <span id="estado" class="sr-only" *ngIf="estadoInput.invalid && estadoInput.touched">(error)</span>
-      <div class="alert alert-danger"*ngIf="estadoInput.invalid && estadoInput.touched">
-        Estado é Obrigatorio.
-      </div>
+      <app-campo-control-error [mostrarErro]="verificaValidTouched(estadoInput)" msgError="Estado é Obrigatorio">
+      </app-campo-control-error>
     </div>
   </div>
 

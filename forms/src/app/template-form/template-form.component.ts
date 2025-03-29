@@ -19,4 +19,16 @@ export class TemplateFormComponent {
     // console.log(this.usuario);
   }
 
+  verificaValidTouched(campo: NgModel){
+    return campo.invalid && campo.touched
+  }
+
+  aplicaCssErro(campo: NgModel){
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feeback': this.verificaValidTouched(campo)
+
+    }
+  }
+
 }
