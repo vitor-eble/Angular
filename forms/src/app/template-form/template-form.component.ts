@@ -12,14 +12,6 @@ export class TemplateFormComponent {
   usuario: any = {
     nome: null,
     email: null,
-    endereco: {
-      cep: null,
-      numero: null,
-      complemento: null,
-      bairro: null,
-      cidade: null,
-      estado: null
-    }
   }
 
   onSubmit(form: any){
@@ -27,7 +19,4 @@ export class TemplateFormComponent {
     // console.log(this.usuario);
   }
 
-  isInvalid(input: NgModel){
-    return input.invalid && input.touched;
-  }
 }
