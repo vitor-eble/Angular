@@ -26,62 +26,65 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="col-md-3" [ngClass]="aplicaCssErro(cepInput)">
-      <label for="cep" class="control-label">CEP</label>
-      <input type="text" class="form-control" id="cep" name="cepInput" ngModel required #cepInput="ngModel" placeholder="Digite o CEP">
-      <app-campo-control-error [mostrarErro]="verificaValidTouched(cepInput)" msgError="CEP é Obrigatorio">
-      </app-campo-control-error>
+  <div ngModelGroup="endereco">
+    <div class="form-group">
+      <div class="col-md-3" [ngClass]="aplicaCssErro(cepInput)">
+        <label for="cep" class="control-label">CEP</label>
+        <input type="text" class="form-control" id="cep" name="cepInput" ngModel required #cepInput="ngModel" placeholder="Digite o CEP">
+        <app-campo-control-error [mostrarErro]="verificaValidTouched(cepInput)" msgError="CEP é Obrigatorio">
+        </app-campo-control-error>
+      </div>
+
+      <div class="col-md-3" [ngClass]="aplicaCssErro(numeroInput)">
+        <label for="numero" class="control-label">Número</label>
+        <input type="number" class="form-control" id="numero" name="numeroInput" ngModel required #numeroInput="ngModel" placeholder="100">
+        <app-campo-control-error [mostrarErro]="verificaValidTouched(numeroInput)" msgError="Número é Obrigatorio">
+        </app-campo-control-error>
+      </div>
+
+      <div class="col-md-6">
+        <label for="complemento" class="control-label">Complemento</label>
+        <input type="text" class="form-control" id="complemento" name="complementoInput" ngModel  #complementoInput="ngModel" placeholder="100">
+      </div>
     </div>
 
-    <div class="col-md-3" [ngClass]="aplicaCssErro(numeroInput)">
-      <label for="numero" class="control-label">Número</label>
-      <input type="number" class="form-control" id="numero" name="numeroInput" ngModel required #numeroInput="ngModel" placeholder="100">
-      <app-campo-control-error [mostrarErro]="verificaValidTouched(numeroInput)" msgError="Número é Obrigatorio">
-      </app-campo-control-error>
+    <div class="form-group" [ngClass]="aplicaCssErro(ruaInput)">
+      <div class="col-sm-12">
+        <label for="rua" class="control-label">Rua</label>
+      </div>
+
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="rua" placeholder="Nome" name="ruaInput"
+        ngModel [ngModel]="usuario.nome" required #ruaInput="ngModel" aria-describedby="nome">
+        <app-campo-control-error [mostrarErro]="verificaValidTouched(ruaInput)" msgError="Rua é Obrigatorio">
+        </app-campo-control-error>
+      </div>
     </div>
 
-    <div class="col-md-6">
-      <label for="complemento" class="control-label">Complemento</label>
-      <input type="text" class="form-control" id="complemento" name="complementoInput" ngModel  #complementoInput="ngModel" placeholder="100">
-    </div>
-  </div>
+    <div class="form-group">
+      <div class="col-md-5" [ngClass]="aplicaCssErro(bairroInput)">
+        <label for="bairro" class="control-label">Bairro</label>
+        <input type="text" class="form-control" id="bairro" name="bairroInput" ngModel required #bairroInput="ngModel" placeholder="Digite o bairro">
+        <app-campo-control-error [mostrarErro]="verificaValidTouched(bairroInput)" msgError="Bairro é Obrigatorio">
+        </app-campo-control-error>
+      </div>
 
-  <div class="form-group" [ngClass]="aplicaCssErro(ruaInput)">
-    <div class="col-sm-12">
-      <label for="rua" class="control-label">Rua</label>
-    </div>
+      <div class="col-md-4" [ngClass]="aplicaCssErro(cidadeInput)">
+        <label for="cidade" class="control-label">Cidade</label>
+        <input type="text" class="form-control" id="cidade" name="cidadeInput" ngModel required #cidadeInput="ngModel" placeholder="Digite a cidade">
+        <app-campo-control-error [mostrarErro]="verificaValidTouched(cidadeInput)" msgError="Cidade é Obrigatorio">
+        </app-campo-control-error>
+      </div>
 
-    <div class="col-sm-12">
-      <input type="text" class="form-control" id="rua" placeholder="Nome" name="ruaInput"
-      ngModel [ngModel]="usuario.nome" required #ruaInput="ngModel" aria-describedby="nome">
-      <app-campo-control-error [mostrarErro]="verificaValidTouched(ruaInput)" msgError="Rua é Obrigatorio">
-      </app-campo-control-error>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-md-5" [ngClass]="aplicaCssErro(bairroInput)">
-      <label for="bairro" class="control-label">Bairro</label>
-      <input type="text" class="form-control" id="bairro" name="bairroInput" ngModel required #bairroInput="ngModel" placeholder="Digite o bairro">
-      <app-campo-control-error [mostrarErro]="verificaValidTouched(bairroInput)" msgError="Bairro é Obrigatorio">
-      </app-campo-control-error>
+      <div class="col-md-3" [ngClass]="aplicaCssErro(estadoInput)">
+        <label for="estado" class="control-label">Estado</label>
+        <input type="text" class="form-control" id="estado" name="estadoInput" ngModel required #estadoInput="ngModel" placeholder="Digite o estado">
+        <app-campo-control-error [mostrarErro]="verificaValidTouched(estadoInput)" msgError="Estado é Obrigatorio">
+        </app-campo-control-error>
+      </div>
     </div>
 
-    <div class="col-md-4" [ngClass]="aplicaCssErro(cidadeInput)">
-      <label for="cidade" class="control-label">Cidade</label>
-      <input type="text" class="form-control" id="cidade" name="cidadeInput" ngModel required #cidadeInput="ngModel" placeholder="Digite a cidade">
-      <app-campo-control-error [mostrarErro]="verificaValidTouched(cidadeInput)" msgError="Cidade é Obrigatorio">
-      </app-campo-control-error>
-    </div>
-
-    <div class="col-md-3" [ngClass]="aplicaCssErro(estadoInput)">
-      <label for="estado" class="control-label">Estado</label>
-      <input type="text" class="form-control" id="estado" name="estadoInput" ngModel required #estadoInput="ngModel" placeholder="Digite o estado">
-      <app-campo-control-error [mostrarErro]="verificaValidTouched(estadoInput)" msgError="Estado é Obrigatorio">
-      </app-campo-control-error>
-    </div>
-  </div>
+ </div>
 
 
   <button type="submit" title="btnSubmit" class="btn btn-primary" [disabled]="!formGroup.valid">
