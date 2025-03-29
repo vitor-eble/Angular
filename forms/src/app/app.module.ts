@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DataFormComponent } from './data-form/data-form.component';
 import { FormsModule } from '@angular/forms';
 import { TemplateFormModule } from './template-form/template-form.module';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { TemplateFormModule } from './template-form/template-form.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    TemplateFormModule
-  ],
-  providers: [],
+    TemplateFormModule,
+    HttpClientModule
+    ],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

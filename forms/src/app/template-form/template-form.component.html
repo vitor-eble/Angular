@@ -1,5 +1,4 @@
 <form #formGroup="ngForm" (ngSubmit)="onSubmit(formGroup)" class="form-horizontal">
-
   <div class="form-group" [ngClass]="aplicaCssErro(nomeInput)">
     <div class="col-sm-12">
       <label for="nome" class="control-label">Nome</label>
@@ -30,7 +29,8 @@
     <div class="form-group">
       <div class="col-md-3" [ngClass]="aplicaCssErro(cepInput)">
         <label for="cep" class="control-label">CEP</label>
-        <input type="text" class="form-control" id="cep" name="cepInput" ngModel required #cepInput="ngModel" placeholder="Digite o CEP">
+        <input type="text" class="form-control" id="cep" name="cepInput" ngModel required #cepInput="ngModel" placeholder="Digite o CEP"
+        (blur)="consultaCEP(cepInput.value)">
         <app-campo-control-error [mostrarErro]="verificaValidTouched(cepInput)" msgError="CEP é Obrigatorio">
         </app-campo-control-error>
       </div>
