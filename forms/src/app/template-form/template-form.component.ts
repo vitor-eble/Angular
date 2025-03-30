@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-template-form',
@@ -41,7 +42,8 @@ export class TemplateFormComponent {
 
       if(validacep.test(cep)){
 
-        // this.http.get min = 10:23
+        this.http.get(`//viacep.com.br/ws/${cep}/json`)
+        .subscribe(dados => console.log(dados));
       }
     }
 
