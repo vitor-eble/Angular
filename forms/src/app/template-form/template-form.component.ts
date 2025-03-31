@@ -22,6 +22,12 @@ export class TemplateFormComponent {
   onSubmit(form: any){
     console.log(form);
     // console.log(this.usuario);
+
+    this.http.post('enderecoServer/formUsuario', JSON.stringify(form.value))
+    .pipe(
+      map(res => res)
+    )
+    .subscribe((dados: any) => console.log(dados));
   }
 
   verificaValidTouched(campo: NgModel){
@@ -48,7 +54,7 @@ export class TemplateFormComponent {
   }
 
   populaDadosForm(dados: any, formulario: any){
-    /*formulario.setValue({
+    /*formulario.setValue({ //setValue é utilizado para setar valores em todos os campos
       nameInput: formulario.value.nameInput,
       emailInput: formulario.value.emailInput,
       endereco: {
@@ -62,7 +68,7 @@ export class TemplateFormComponent {
       }
     });*/
 
-    formulario.form.patchValue({
+    formulario.form.patchValue({ //patchValue é utilizado para setar valores em campos específicos
       endereco: {
         //cepInput: dados.cep,
         complementoInput: dados.complemento,
