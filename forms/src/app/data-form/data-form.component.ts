@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
+
 @Component({
   selector: 'app-data-form',
   standalone: false,
@@ -11,7 +14,7 @@ export class DataFormComponent {
 
   formulario!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
   ngOnInit() {
 
@@ -26,6 +29,14 @@ export class DataFormComponent {
       emailInput: [null]
     }) */
 
+  }
+
+  onSubmit(){
+    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+    .pipe(
+      map(res => res)
+    )
+    .subscribe((dados: any) => console.log(dados));
   }
 
 }
