@@ -30,8 +30,8 @@ export class TemplateFormComponent {
     .subscribe((dados: any) => console.log(dados));
   }
 
-  verificaValidTouched(campo: NgModel){
-    return campo.invalid && campo.touched
+  verificaValidTouched(campo: NgModel): boolean{
+    return campo.invalid && campo.touched || false
   }
 
   aplicaCssErro(campo: NgModel){

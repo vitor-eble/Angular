@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
+import { AnimationPlayer } from '@angular/animations';
 
 @Component({
   selector: 'app-data-form',
@@ -56,6 +57,24 @@ export class DataFormComponent {
 
   resetar(){
     this.formulario.reset()
+  }
+
+  verificaValidTouched(campo: any): boolean{
+    return this.formulario.get(campo)?.invalid && this.formulario.get(campo)?.touched || false
+  }
+
+  verificaEmailInvalido(){
+    let campoEmail = this.formulario.get('emailInput')
+    if(campoEmail?.errors){
+      return campoEmail.errors['email']
+    }
+  }
+
+  aplicaCssErro(campo: any){
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feeback': this.verificaValidTouched(campo)
+    }
   }
 
 }
