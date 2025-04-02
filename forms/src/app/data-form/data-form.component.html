@@ -1,4 +1,4 @@
-<form  class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<form  class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit(formulario)">
   <div class="form-group">
     <div class="col-sm-12">
       <label for="nome" class="control-label">Nome</label>
@@ -20,7 +20,7 @@
   <button type="submit" title="btnSubmit" class="btn btn-primary">
     Sumbit
   </button>
-  <button  title="btnSubmit" class="btn ">
+  <button  title="btnSubmit" class="btn " (click)="resetar()">
     cancelar
   </button>
   <app-form-debug [form]="formulario"></app-form-debug>

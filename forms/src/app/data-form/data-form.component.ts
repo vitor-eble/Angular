@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
@@ -19,8 +19,15 @@ export class DataFormComponent {
   ngOnInit() {
 
   this.formulario = new FormGroup({
-    nameInput: new FormControl(null),
-    emailInput: new FormControl(null)
+    nameInput: new FormControl(null, [
+      Validators.required
+    ]),
+    emailInput: new FormControl(null, [
+      Validators.required,
+      Validators.email
+    ])
+    //validator.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+    //Validators.minLength(3), Validators.maxLength(20)
   });
 
     //? segunda forma de criar formulario
@@ -31,7 +38,9 @@ export class DataFormComponent {
 
   }
 
-  onSubmit(){
+  onSubmit(form: any){
+    console.log(form);
+
     this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
     .pipe(
       map(res => res)
@@ -39,7 +48,7 @@ export class DataFormComponent {
     .subscribe((dados: any) => {
       console.log(dados);
       //reseta o formulario
-      this.resetar()
+      // this.resetar()
       //this.formulario.reset()
     },
     (error: any) => alert('erro'));
