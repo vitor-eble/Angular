@@ -36,7 +36,17 @@ export class DataFormComponent {
     .pipe(
       map(res => res)
     )
-    .subscribe((dados: any) => console.log(dados));
+    .subscribe((dados: any) => {
+      console.log(dados);
+      //reseta o formulario
+      this.resetar()
+      //this.formulario.reset()
+    },
+    (error: any) => alert('erro'));
+  }
+
+  resetar(){
+    this.formulario.reset()
   }
 
 }
