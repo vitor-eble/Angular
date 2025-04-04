@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
-import { AnimationPlayer } from '@angular/animations';
 
 @Component({
   selector: 'app-data-form',
@@ -65,17 +64,35 @@ export class DataFormComponent {
   onSubmit(form: any){
     console.log(form);
 
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-    .pipe(
-      map(res => res)
-    )
-    .subscribe((dados: any) => {
-      console.log(dados);
-      //reseta o formulario
-      // this.resetar()
-      //this.formulario.reset()
-    },
-    (error: any) => alert('erro'));
+    if(this.formulario.valid){
+      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      .pipe(
+        map(res => res)
+      )
+      .subscribe(
+        (dados: any) => {
+          console.log(dados);
+          //reseta o formulario
+          // this.resetar()
+          //this.formulario.reset()
+        },
+        (error: any) => alert('erro')
+      );
+    } else {
+      console.log('formulario inválido');
+      this.verificaValidacoesForm(this.formulario)
+    }
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup){
+    Object.keys(formGroup.controls).forEach(campo => {
+      console.log(campo);
+      const controle = formGroup.get(campo);
+      controle?.markAsTouched();
+      if(controle instanceof FormGroup){
+        this.verificaValidacoesForm(controle);
+      }
+    })
   }
 
   consultaCEP(){
@@ -104,7 +121,7 @@ export class DataFormComponent {
       }
     });
 
-    this.formulario.get('nameInput')?.setValue('Lucas');
+    // this.formulario.get('nameInput')?.setValue('Lucas');
   }
 
   resetaDadosForm(){
