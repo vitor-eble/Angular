@@ -27,25 +27,28 @@ export class DataFormComponent {
       Validators.required,
       Validators.email
     ]),
-    cepInput: new FormControl(null, [
-      Validators.required
-    ]),
-    numeroInput: new FormControl(null, [
-      Validators.required
-    ]),
-    complementoInput: new FormControl(null),
-    ruaInput: new FormControl(null, [
-      Validators.required
-    ]),
-    bairroInput: new FormControl(null, [
-      Validators.required
-    ]),
-    cidadeInput: new FormControl(null, [
-      Validators.required
-    ]),
-    estadoInput: new FormControl(null, [
-      Validators.required
-    ]),
+    endereco: new FormGroup({
+      cepInput: new FormControl(null, [
+        Validators.required
+      ]),
+      numeroInput: new FormControl(null, [
+        Validators.required
+      ]),
+      complementoInput: new FormControl(null),
+      ruaInput: new FormControl(null, [
+        Validators.required
+      ]),
+      bairroInput: new FormControl(null, [
+        Validators.required
+      ]),
+      cidadeInput: new FormControl(null, [
+        Validators.required
+      ]),
+      estadoInput: new FormControl(null, [
+        Validators.required
+      ]),
+    })
+
 
     //validator.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
     //Validators.minLength(3), Validators.maxLength(20)
