@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
+import { DropdownService } from '../shared/services/dropdown.service';
+import { Estadobr } from '../shared/models/estado-br';
 
 @Component({
   selector: 'app-data-form',
@@ -13,45 +15,50 @@ import { map } from 'rxjs';
 export class DataFormComponent {
 
   formulario!: FormGroup;
+  estados: Estadobr[] = [];
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private dropdownService: DropdownService) { }
 
   ngOnInit() {
+    this.dropdownService.getEstadosBr()
+      .subscribe((dados: any) => {
+        this.estados = dados;
+        console.log(dados);
+      });
+    this.formulario = new FormGroup({
+      nameInput: new FormControl(null, [
+        Validators.required
+      ]),
+      emailInput: new FormControl(null, [
+        Validators.required,
+        Validators.email
+      ]),
+      endereco: new FormGroup({
+        cepInput: new FormControl(null, [
+          Validators.required
+        ]),
+        numeroInput: new FormControl(null, [
+          Validators.required
+        ]),
+        complementoInput: new FormControl(null),
+        ruaInput: new FormControl(null, [
+          Validators.required
+        ]),
+        bairroInput: new FormControl(null, [
+          Validators.required
+        ]),
+        cidadeInput: new FormControl(null, [
+          Validators.required
+        ]),
+        estadoInput: new FormControl(null, [
+          Validators.required
+        ]),
+      })
 
-  this.formulario = new FormGroup({
-    nameInput: new FormControl(null, [
-      Validators.required
-    ]),
-    emailInput: new FormControl(null, [
-      Validators.required,
-      Validators.email
-    ]),
-    endereco: new FormGroup({
-      cepInput: new FormControl(null, [
-        Validators.required
-      ]),
-      numeroInput: new FormControl(null, [
-        Validators.required
-      ]),
-      complementoInput: new FormControl(null),
-      ruaInput: new FormControl(null, [
-        Validators.required
-      ]),
-      bairroInput: new FormControl(null, [
-        Validators.required
-      ]),
-      cidadeInput: new FormControl(null, [
-        Validators.required
-      ]),
-      estadoInput: new FormControl(null, [
-        Validators.required
-      ]),
-    })
 
-
-    //validator.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-    //Validators.minLength(3), Validators.maxLength(20)
-  });
+      //validator.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+      //Validators.minLength(3), Validators.maxLength(20)
+    });
 
     //? segunda forma de criar formulario
     /* this.formulario = this.formBuilder.group({
