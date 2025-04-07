@@ -3,6 +3,7 @@ import { NgModel } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 
 @Component({
   selector: 'app-template-form',
@@ -17,7 +18,10 @@ export class TemplateFormComponent {
     email: null,
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private cepService: ConsultaCepService
+  ) { }
 
   onSubmit(form: any){
     console.log(form);
@@ -43,13 +47,9 @@ export class TemplateFormComponent {
 
   consultaCEP(cep: any, form: any){
     cep = cep.replace(/\D/g, '');
-    if(cep != ""){
-      var validacep = /^[0-9]{8}$/;
-      if(validacep.test(cep)){
-        this.resetaDadosForm(form)
-        this.http.get(`//viacep.com.br/ws/${cep}/json`)
-        .subscribe(dados => this.populaDadosForm(dados, form));
-      }
+    if(cep != null && cep !== ''){
+      this.cepService.consultaCEP(cep)
+        .subscribe((dados: any) => this.populaDadosForm(dados, form));
     }
   }
 
