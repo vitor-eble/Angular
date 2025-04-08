@@ -81,7 +81,11 @@
 
       <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.estadoInput')">
         <label for="estado" class="control-label">Estado</label>
-        <input type="text" class="form-control" id="estado"  placeholder="Digite o estado" formControlName="estadoInput">
+        <select type="text" class="form-control" id="estado"  placeholder="Digite o estado" formControlName="estadoInput">
+          <option *ngFor="let estado of estados | async" [value]="estado.sigla">
+            {{ estado.nome }}
+          </option>
+        </select>
         <app-campo-control-error [mostrarErro]="verificaValidTouched('endereco.estadoInput')" msgError="Estado é Obrigatorio">
         </app-campo-control-error>
       </div>
@@ -89,7 +93,7 @@
 
  </div>
 
-  <button type="submit" title="btnSubmit" class="btn btn-primary">
+  <button type="submit" title="btnSubmit" class="btn btn-primary" style="margin-right: 12px;">
     Sumbit
   </button>
   <button  title="btnSubmit" class="btn " (click)="resetar()">
