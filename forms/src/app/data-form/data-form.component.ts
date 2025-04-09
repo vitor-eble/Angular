@@ -19,6 +19,7 @@ export class DataFormComponent {
   //estados: Estadobr[] = [];
   estados!: Observable<Estadobr[]>;
   cargos: any[] = [];
+  tecnologias: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,10 +29,9 @@ export class DataFormComponent {
   ) { }
 
   ngOnInit() {
-
     this.estados = this.dropdownService.getEstadosBr();
-
     this.cargos = this.dropdownService.getCargos();
+    this.tecnologias = this.dropdownService.getTecnologias();
 
     // this.dropdownService.getEstadosBr().subscribe((dados: any) => {
     //   this.estados = dados;
@@ -51,6 +51,7 @@ export class DataFormComponent {
         estadoInput: [null, Validators.required],
       }),
       cargo: [null],
+      tecnologias: [null],
     });
 
     // this.formulario = new FormGroup({
@@ -184,6 +185,10 @@ export class DataFormComponent {
   setCargo(){
     const cargo = { nome: 'Dev', nivel: 'Pleno', desc: 'Dev Pl' };
     this.formulario.get('cargo')?.setValue(cargo);
+  }
+
+  setTech(){
+    this.formulario.get('tecnologias')?.setValue(['Java', 'PHP']);
   }
 
   compararCargos(obj1: any, obj2: any) {
