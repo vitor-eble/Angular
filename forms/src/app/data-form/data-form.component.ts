@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
@@ -22,6 +22,7 @@ export class DataFormComponent {
   tecnologias!: any[];
   newsLetters!: any[];
   newsLettersOp!: any[];
+  frameworks = ['Angular', 'React', 'VueJS', 'sencha'];
 
 
   constructor(
@@ -58,6 +59,7 @@ export class DataFormComponent {
       tecnologias: [null],
       newsletters: ['s'],
       termos: [null, Validators.pattern('true')],
+      frameworks: this.buildFramework()
     });
 
     // this.formulario = new FormGroup({
@@ -96,11 +98,31 @@ export class DataFormComponent {
 
   }
 
+  buildFramework() {
+    const values = this.frameworks.map(v => new FormControl(false));
+    return this.formBuilder.array(values);
+
+    // this.formBuilder.array([
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //])
+  }
+
   onSubmit(form: any) {
     console.log(form);
 
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    valueSubmit = Object.assign(valueSubmit,{
+      frameworks: valueSubmit.frameworks
+        .map((v: any, i: number) => v ? this.frameworks[i] : null)
+        .filter((v: any) => v !== null)
+    })
+
     if (this.formulario.valid) {
-      this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      this.http.post('https://httpbin.org/post', JSON.stringify(valueSubmit))
         .pipe(
           map(res => res)
         )
@@ -200,6 +222,10 @@ export class DataFormComponent {
   compararCargos(obj1: any, obj2: any) {
     return obj1 && obj2 ? (obj1.nome === obj2.nome && obj1.nivel === obj2.nivel) : obj1 === obj2;
 
+  }
+
+  get frameworksArray(): FormArray {
+    return this.formulario.get('frameworks') as FormArray;
   }
 
 }
