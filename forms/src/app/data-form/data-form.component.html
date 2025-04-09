@@ -94,7 +94,7 @@
  </div>
 
  <div class="form-group">
-  <div class="col-md-3" [ngClass]="aplicaCssErro('cargo')">
+  <div class="col-md-4" [ngClass]="aplicaCssErro('cargo')">
     <label for="cargo" class="control-label">Cargo</label>
     <select type="text" class="form-control" id="cargo"  placeholder="Digite o estado" formControlName="cargo"
     [compareWith]="compararCargos">
@@ -104,7 +104,7 @@
     </select>
   </div>
 
-  <div class="col-md-3" [ngClass]="aplicaCssErro('tecnologias')">
+  <div class="col-md-4" [ngClass]="aplicaCssErro('tecnologias')">
     <label for="tecnologias" class="control-label">Tecnologias</label>
     <select type="text" class="form-control" id="tecnologias"  placeholder="Digite o estado" formControlName="tecnologias" multiple>
       <option multiple *ngFor="let tecnologia of tecnologias" [ngValue]="tecnologia.nome" >
@@ -112,6 +112,19 @@
       </option>
     </select>
   </div>
+
+  <div class="col-md-3" [ngClass]="aplicaCssErro('newsletters')">
+    <label for="newsletters" class="control-label">Newsletters</label>
+    <div id="newsletters" class="row">
+      <div class="col-sm-4" *ngFor="let item of newsLettersOp">
+        <label class="radio-inline">
+          <input type="radio" formControlName="newsletters" [value]="item.nome"> {{ item.desc }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+
  </div>
 
   <div class="buttons-actions">

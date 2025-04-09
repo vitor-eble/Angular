@@ -18,8 +18,11 @@ export class DataFormComponent {
   formulario!: FormGroup;
   //estados: Estadobr[] = [];
   estados!: Observable<Estadobr[]>;
-  cargos: any[] = [];
-  tecnologias: any[] = [];
+  cargos!: any[];
+  tecnologias!: any[];
+  newsLetters!: any[];
+  newsLettersOp!: any[];
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +35,7 @@ export class DataFormComponent {
     this.estados = this.dropdownService.getEstadosBr();
     this.cargos = this.dropdownService.getCargos();
     this.tecnologias = this.dropdownService.getTecnologias();
+    this.newsLettersOp = this.dropdownService.getNewsletters();
 
     // this.dropdownService.getEstadosBr().subscribe((dados: any) => {
     //   this.estados = dados;
@@ -52,6 +56,7 @@ export class DataFormComponent {
       }),
       cargo: [null],
       tecnologias: [null],
+      newsletters: ['s']
     });
 
     // this.formulario = new FormGroup({

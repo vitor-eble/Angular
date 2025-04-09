@@ -35,4 +35,11 @@ export class DropdownService {
       { nome: 'Go', desc: 'Go' },
     ]
   }
+
+  getNewsletters(){
+    return [
+      { nome: 's', desc: 'Sim' },
+      { nome: 'n', desc: 'Não' },
+    ]
+  }
 }
