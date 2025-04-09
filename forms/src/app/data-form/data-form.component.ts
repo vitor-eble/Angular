@@ -56,7 +56,8 @@ export class DataFormComponent {
       }),
       cargo: [null],
       tecnologias: [null],
-      newsletters: ['s']
+      newsletters: ['s'],
+      termos: [null, Validators.pattern('true')],
     });
 
     // this.formulario = new FormGroup({
