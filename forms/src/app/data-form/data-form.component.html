@@ -93,11 +93,26 @@
 
  </div>
 
+ <div class="form-group">
+  <div class="col-md-3" [ngClass]="aplicaCssErro('cargo')">
+    <label for="cargo" class="control-label">Cargo</label>
+    <select type="text" class="form-control" id="cargo"  placeholder="Digite o estado" formControlName="cargo"
+    [compareWith]="compararCargos">
+      <option *ngFor="let cargo of cargos" [ngValue]="cargo" >
+        {{ cargo.desc }}
+      </option>
+    </select>
+  </div>
+ </div>
+
   <button type="submit" title="btnSubmit" class="btn btn-primary" style="margin-right: 12px;">
     Sumbit
   </button>
   <button  title="btnSubmit" class="btn " (click)="resetar()">
     cancelar
+  </button>
+  <button  title="btnSubmit" class="btn " (click)="setCargo()">
+    cargo
   </button>
   <app-form-debug [form]="formulario"></app-form-debug>
 </form>
