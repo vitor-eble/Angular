@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { Estadobr } from '../shared/models/estado-br';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
+import { FormValidators } from '../shared/form-validators';
 
 @Component({
   selector: 'app-data-form',
@@ -100,7 +101,7 @@ export class DataFormComponent {
 
   buildFramework() {
     const values = this.frameworks.map(v => new FormControl(false));
-    return this.formBuilder.array(values);
+    return this.formBuilder.array(values, [FormValidators.requiredMinCheckbox(1)] );
 
     // this.formBuilder.array([
     //   new FormControl(false),
@@ -109,6 +110,8 @@ export class DataFormComponent {
     //   new FormControl(false),
     //])
   }
+
+
 
   onSubmit(form: any) {
     console.log(form);
