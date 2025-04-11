@@ -1,7 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn, FormArray } from '@angular/forms';
 export class FormValidators {
 
-  static  requiredMinCheckbox(min: number = 1): ValidatorFn{
+  static requiredMinCheckbox(min: number = 1): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const formArray = control as FormArray;
       const totalChecked = formArray.controls
@@ -11,13 +11,14 @@ export class FormValidators {
     };
   }
 
+
   static cepValidator(control: AbstractControl): ValidationErrors | null {
+
     const cep = control.value;
-    if(cep != null && cep !== ''){
+    if (cep != null && cep !== '') {
       const cepPattern = /^[0-9]{5}-[0-9]{3}$/;
       return cepPattern.test(cep) ? null : { cepInvalido: true }
     }
-
     return null;
   }
 }
