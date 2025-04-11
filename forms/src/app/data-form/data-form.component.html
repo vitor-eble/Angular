@@ -19,7 +19,7 @@
     <div class="col-sm-12">
       <input type="email" class="form-control" id="email" placeholder="nome@email.com" formControlName="emailInput">
 
-      <app-campo-control-error [mostrarErro]="verificaValidTouched('emailInput')" msgError="Email é Obrigatorio">
+      <app-campo-control-error [mostrarErro]="verificaRequired('emailInput')" msgError="Email é Obrigatorio">
       </app-campo-control-error>
 
       <app-campo-control-error [mostrarErro]="verificaEmailInvalido()" msgError="Email Invalido">
@@ -34,6 +34,8 @@
         <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" formControlName="cepInput"
         (blur)="consultaCEP()">
         <app-campo-control-error [mostrarErro]="verificaValidTouched('endereco.cepInput')" msgError="CEP é Obrigatorio">
+        </app-campo-control-error>
+        <app-campo-control-error [mostrarErro]="!!formulario.get('endereco.cepInput')?.hasError('cepInvalido')" msgError="CEP Invalido">
         </app-campo-control-error>
         <!-- [mostrarErro]="formulario.get('ende')" -->
 
