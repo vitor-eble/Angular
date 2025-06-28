@@ -19,11 +19,28 @@
     <div class="col-sm-12">
       <input type="email" class="form-control" id="email" placeholder="nome@email.com" formControlName="emailInput">
 
-      <app-campo-control-error [mostrarErro]="verificaRequired('emailInput')" msgError="Email é Obrigatorio">
+      <app-campo-control-error [mostrarErro]="verificaValidTouched('emailInput')" msgError="Email é Obrigatorio">
       </app-campo-control-error>
 
       <app-campo-control-error [mostrarErro]="verificaEmailInvalido()" msgError="Email Invalido">
       </app-campo-control-error>
+    </div>
+  </div>
+
+  <div class="form-group" [ngClass]="aplicaCssErro('confirmarEmailInput')">
+    <div class="col-sm-12">
+      <label for="confirmarEmail" class="control-label">Confirmar Email</label>
+    </div>
+    <div class="col-sm-12">
+      <input type="conrfimarEmail" class="form-control" id="confirmarEmail" placeholder="nome@email.com" formControlName="confirmarEmailInput">
+
+      <app-campo-control-error [mostrarErro]="!!formulario.get('confirmarEmailInput')?.hasError('equalsTo')" msgError="Os emails não conferem">
+      </app-campo-control-error>
+
+      <app-campo-control-error [mostrarErro]="!!formulario.get('confirmarEmailInput')?.hasError('required')"  msgError="Confirmar Email é Obrigatorio">
+
+      </app-campo-control-error>
+
     </div>
   </div>
 

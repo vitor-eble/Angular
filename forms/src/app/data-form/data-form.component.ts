@@ -47,6 +47,7 @@ export class DataFormComponent {
     this.formulario = this.formBuilder.group({
       nameInput: [null, Validators.required],
       emailInput: [null, Validators.required],
+      confirmarEmailInput: [null, [Validators.required, FormValidators.equalsTo('emailInput')]],
       endereco: this.formBuilder.group({
         cepInput: [null, [Validators.required, FormValidators.cepValidator]],
         numeroInput: [null, Validators.required],
@@ -197,10 +198,6 @@ export class DataFormComponent {
 
   verificaValidTouched(campo: string): boolean {
     return this.formulario.get(campo)?.invalid && this.formulario.get(campo)?.touched || false
-  }
-
-  verificaRequired(campo: string): boolean {
-    return this.formulario.get('campo')?.hasError('required') && this.formulario.get('campo')?.touched || false
   }
 
   verificaEmailInvalido() {
