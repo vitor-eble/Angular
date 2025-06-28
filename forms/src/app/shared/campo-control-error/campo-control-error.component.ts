@@ -8,7 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class CampoControlErrorComponent {
 
-  @Input() mostrarErro!: Boolean;
+  @Input() mostrarErro!: Boolean | string;
   @Input() msgError!: string;
+
+  @Input() mostrarValido!: Boolean | string;
+  @Input() msgValido!: string;
 
 }

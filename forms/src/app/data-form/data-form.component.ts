@@ -7,6 +7,7 @@ import { DropdownService } from '../shared/services/dropdown.service';
 import { Estadobr } from '../shared/models/estado-br';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { FormValidators } from '../shared/form-validators';
+import { VerificaEmailService } from './services/verifica-email.service';
 
 @Component({
   selector: 'app-data-form',
@@ -30,10 +31,13 @@ export class DataFormComponent {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private dropdownService: DropdownService,
-    private cepService: ConsultaCepService
+    private cepService: ConsultaCepService,
+    private verificaEmail: VerificaEmailService
   ) { }
 
   ngOnInit() {
+
+    // this.verificaEmail.verificarEmail('email@email.com').subscribe()
     this.estados = this.dropdownService.getEstadosBr();
     this.cargos = this.dropdownService.getCargos();
     this.tecnologias = this.dropdownService.getTecnologias();
@@ -46,7 +50,7 @@ export class DataFormComponent {
 
     this.formulario = this.formBuilder.group({
       nameInput: [null, Validators.required],
-      emailInput: [null, Validators.required],
+      emailInput: [null, [Validators.required, Validators.email], this.validarEmail.bind(this)],
       confirmarEmailInput: [null, [Validators.required, FormValidators.equalsTo('emailInput')]],
       endereco: this.formBuilder.group({
         cepInput: [null, [Validators.required, FormValidators.cepValidator]],
@@ -230,6 +234,15 @@ export class DataFormComponent {
 
   get frameworksArray(): FormArray {
     return this.formulario.get('frameworks') as FormArray;
+  }
+
+  validarEmail(formControl: FormControl){
+    return this.verificaEmail.verificarEmail(formControl.value)
+      .pipe(
+        map((emailExiste: boolean) => emailExiste ? { emailInvalido: true } : null)
+        // emailExiste ? (se sim) retorna um objeto com a propriedade emailInvalido: true
+        // : (se não) retorna null
+      )
   }
 
 }

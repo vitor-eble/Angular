@@ -24,6 +24,13 @@
 
       <app-campo-control-error [mostrarErro]="verificaEmailInvalido()" msgError="Email Invalido">
       </app-campo-control-error>
+
+      <app-campo-control-error [mostrarErro]="formulario.get('emailInput')?.status === 'PENDING' " msgError="Validando Email...">
+      </app-campo-control-error>
+      <app-campo-control-error [mostrarValido]="formulario.get('emailInput')?.status === 'VALID' " msgValido="Email Valido">
+      </app-campo-control-error>
+      <app-campo-control-error [mostrarErro]="!!formulario.get('emailInput')?.hasError('emailInvalido') " msgError="Email Ja Cadastrado">
+      </app-campo-control-error>
     </div>
   </div>
 
@@ -35,10 +42,6 @@
       <input type="conrfimarEmail" class="form-control" id="confirmarEmail" placeholder="nome@email.com" formControlName="confirmarEmailInput">
 
       <app-campo-control-error [mostrarErro]="!!formulario.get('confirmarEmailInput')?.hasError('equalsTo')" msgError="Os emails não conferem">
-      </app-campo-control-error>
-
-      <app-campo-control-error [mostrarErro]="!!formulario.get('confirmarEmailInput')?.hasError('required')"  msgError="Confirmar Email é Obrigatorio">
-
       </app-campo-control-error>
 
     </div>

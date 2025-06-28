@@ -5,3 +5,11 @@
   </div>
 </div>
 
+<div *ngIf="mostrarValido">
+  <span id="nome" class="sr-only" >(valid)</span>
+  <div class="alert alert-success">
+    {{ msgValido }}
+  </div>
+
+</div>
+
