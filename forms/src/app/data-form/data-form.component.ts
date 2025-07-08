@@ -49,7 +49,7 @@ export class DataFormComponent {
     // });
 
     this.formulario = this.formBuilder.group({
-      nameInput: [null, Validators.required],
+      nameInput: [null, [Validators.required, Validators.minLength(3)]],
       emailInput: [null, [Validators.required, Validators.email], this.validarEmail.bind(this)],
       confirmarEmailInput: [null, [Validators.required, FormValidators.equalsTo('emailInput')]],
       endereco: this.formBuilder.group({

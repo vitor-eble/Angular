@@ -7,8 +7,8 @@
     <div class="col-sm-12">
       <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nameInput" >
 
-      <app-campo-control-error [mostrarErro]="verificaValidTouched('nameInput')" msgError="Nome é Obrigatorio">
-      </app-campo-control-error>
+      <app-error-msg [control]="formulario.get('nameInput')" label="nome">
+      </app-error-msg>
     </div>
   </div>
 
@@ -29,7 +29,7 @@
       </app-campo-control-error>
       <app-campo-control-error [mostrarValido]="formulario.get('emailInput')?.status === 'VALID' " msgValido="Email Valido">
       </app-campo-control-error>
-      <app-campo-control-error [mostrarErro]="!!formulario.get('emailInput')?.hasError('emailInvalido') " msgError="Email Ja Cadastrado">
+      <app-campo-control-error [mostrarErro]="formulario.get('emailInput')?.hasError('emailInvalido') " msgError="Email Ja Cadastrado">
       </app-campo-control-error>
     </div>
   </div>
