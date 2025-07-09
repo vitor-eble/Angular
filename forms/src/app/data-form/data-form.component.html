@@ -52,8 +52,7 @@
     <div class="form-group">
       <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.cepInput')">
         <label for="cep" class="control-label">CEP</label>
-        <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" formControlName="cepInput"
-        (blur)="consultaCEP()">
+        <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" formControlName="cepInput">
         <app-error-msg [control]="formulario.get('endereco.cepInput')" label="cep"></app-error-msg>
 
         <!-- <app-campo-control-error [mostrarErro]="verificaValidTouched('endereco.cepInput')" msgError="CEP é Obrigatorio">

@@ -17,9 +17,7 @@ export class ErrorMsgComponent {
   @Input() label!: string;
 
 
-  get ErrorMessage(){
-    console.log('Errors:', this.control?.errors, 'Touched:', this.control?.touched);
-    for ( const propertyName in this.control?.errors){
+  get ErrorMessage(){    for ( const propertyName in this.control?.errors){
       if (this.control.errors.hasOwnProperty(propertyName) &&
         this.control.touched) {
           return FormValidators.getErrorMessage(this.label, propertyName, this.control.errors[propertyName]);

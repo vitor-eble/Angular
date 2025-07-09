@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { empty, map, Observable } from 'rxjs';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { Estadobr } from '../shared/models/estado-br';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { FormValidators } from '../shared/form-validators';
 import { VerificaEmailService } from './services/verifica-email.service';
+
+import { tap, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-data-form',
@@ -68,7 +70,21 @@ export class DataFormComponent {
       frameworks: this.buildFramework()
     });
 
-    this.formulario.
+    this.formulario.get('endereco.cepInput')?.statusChanges
+      .pipe(
+        distinctUntilChanged(),
+        tap((status: any) => console.log('status CEP:', status)),
+        switchMap((status: any) => status === 'VALID' ?
+          this.cepService.consultaCEP(this.formulario.get('endereco.cepInput')?.value)
+          : empty()
+        )
+      )
+      .subscribe((dados: any) => dados ? this.populaDadosForm(dados) : {} )
+    // valueChanges é um observable que emite o valor do campo sempre que ele é alterado
+    // explique o distinctUntilChanged() que evita que o observable emita valores repetidos
+    // explique o tap() que é usado para executar uma ação sem alterar o fluxo do observable
+
+
 
     // this.formulario = new FormGroup({
     //   nameInput: new FormControl(null, [
