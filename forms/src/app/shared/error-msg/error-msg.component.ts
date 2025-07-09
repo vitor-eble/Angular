@@ -16,11 +16,9 @@ export class ErrorMsgComponent {
   @Input() control!: AbstractControl<any> | FormControl<any> | any;
   @Input() label!: string;
 
-  ngOnInit() {
-
-  }
 
   get ErrorMessage(){
+    console.log('Errors:', this.control?.errors, 'Touched:', this.control?.touched);
     for ( const propertyName in this.control?.errors){
       if (this.control.errors.hasOwnProperty(propertyName) &&
         this.control.touched) {

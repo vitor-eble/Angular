@@ -68,6 +68,8 @@ export class DataFormComponent {
       frameworks: this.buildFramework()
     });
 
+    this.formulario.
+
     // this.formulario = new FormGroup({
     //   nameInput: new FormControl(null, [
     //     Validators.required
@@ -120,6 +122,7 @@ export class DataFormComponent {
 
   onSubmit(form: any) {
     console.log(form);
+
 
     let valueSubmit = Object.assign({}, this.formulario.value);
 
@@ -244,5 +247,8 @@ export class DataFormComponent {
         // : (se não) retorna null
       )
   }
+
+
+
 
 }

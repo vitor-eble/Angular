@@ -15,9 +15,8 @@ export class FormValidators {
   static cepValidator(control: AbstractControl): ValidationErrors | null {
 
     const cep = control.value;
-    if (cep != null && cep !== '') {
-      const cepPattern = /^[0-9]{5}-[0-9]{3}$/;
-      return cepPattern.test(cep) ? null : { cepInvalido: true }
+    if (!/^[0-9]{5}-[0-9]{3}$/.test(cep)) {
+      return { cepInvalido: true }
     }
     return null;
   }
@@ -49,7 +48,6 @@ export class FormValidators {
       'minlength': `${fieldName} deve ter no minimo ${validatorValue.requiredLength} caracteres`,
       'cepInvalido': 'CEP invalido',
     }
-
     return config[validatorName]
   }
 }
